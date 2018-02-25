@@ -27,6 +27,12 @@ function AppController($scope) {
 	};
 
 	// data for personal details form
+	$scope.personalDetails = {
+		firstName: '',
+		lastName: '',
+		phone: null,
+		address: ''
+	};
 
 	$scope.goto = function(form) {
 		switch (form) {
@@ -60,8 +66,9 @@ function AppController($scope) {
 	};
 
 	$scope.matchPasswords = () => {
+		const { password, confirmPassword } = $scope.account;
 		$scope.createAccountForm.confirmPassword.$error.doNotMatch =
-			$scope.confirmPassword && $scope.password !== $scope.confirmPassword;
+			confirmPassword && password !== confirmPassword;
 	};
 }
 
