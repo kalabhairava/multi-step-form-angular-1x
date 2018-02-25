@@ -1,0 +1,88 @@
+html {
+	font-size: 10px;
+	margin: 0;
+}
+
+body {
+	font-size: 1.6rem;
+}
+
+.error {
+	color: red;
+}
+
+/* .container {
+	display: flex;
+} */
+
+/* input {
+	display: block;
+	font-size: 1.6rem;
+	padding: 1rem;
+	margin: 1rem 0;
+	width: 100%;
+} */
+
+.container {
+}
+
+.container form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+.container__title {
+	text-align: center;
+	font-size: 2.4rem;
+}
+
+.container__subtitle {
+	text-align: center;
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.container__input {
+	display: block;
+	font-size: 1.6rem;
+	padding: 1rem;
+	margin: 1rem 0;
+	width: 100%;
+}
+
+/* .container__input-group {
+	flex: 0 0 5rem;
+} */
+
+.container__textarea {
+	font-size: 1.6rem;
+	padding: 1rem;
+	margin: 1rem 0;
+	width: 100%;
+}
+
+.container__button {
+	padding: 0.5rem;
+	background-color: green;
+	color: white;
+	cursor: pointer;
+}
+
+.container__button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.container__button--left {
+	float: left;
+}
+
+.container__button--right {
+	float: right;
+}
+
+* {
+	outline: 1px solid red;
+}

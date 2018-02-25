@@ -2,29 +2,26 @@
 
 <head>
     <title>Angular Bare</title>
-    <script src="angular-1.4.8.min.js"></script>
-    <script src="angular-messages.min.js"></script>
+    <script src="../libs/angular-1.4.8.min.js"></script>
+    <script src="../libs/angular-messages.min.js"></script>
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width initial-scale=1">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
-    <div ng-app="app" ng-controller="appController">
+    <div id="app" class="container" ng-app="app" ng-controller="appController">
         <div ng-show="showCreateAccountForm">
             <form name="createAccountForm">
                 <header>
-                    <h2>CREATE ACCOUNT</h2>
-                    <p>This is step 1</p>
+                    <h2 class="container__title">CREATE ACCOUNT</h2>
+                    <h3 class="container__subtitle">This is step 1</h3>
                 </header>
 
                 <div>
                     <input name="email" 
                            type="email" 
+                           class="container__input"
                            ng-model="account.email" 
                            placeholder="Email" 
                            autocomplete="email username"
@@ -42,6 +39,7 @@
                     </div>       
                     <input name="password"
                            type="password" 
+                           class="container__input"
                            ng-model="account.password" 
                            placeholder="Password" 
                            ng-change="matchPasswords()" 
@@ -61,6 +59,7 @@
                     </div>
                     <input name="confirmPassword" 
                            type="password"
+                           class="container__input"
                            ng-model="account.confirmPassword" 
                            placeholder="Confirm Password" 
                            ng-change="matchPasswords()" 
@@ -80,7 +79,9 @@
                 </div>
 
                 <div>
-                    <button ng-click="goto('SOCIAL_MEDIA')" ng-disabled="createAccountForm.$invalid">
+                    <button ng-click="goto('SOCIAL_MEDIA')" 
+                            ng-disabled="createAccountForm.$invalid"
+                            class="container__button">
                         Next
                     </button>
                 </div>
@@ -90,31 +91,36 @@
         <div ng-show="showSocialProfilesForm">
             <form name="socialProfilesForm">
             <header>
-                <h2>SOCIAL PROFILES</h2>
-                <p>Your presence on the social network</p>
+                <h2 class="container__title">SOCIAL PROFILES</h2>
+                <p class="container__subtitle">Your presence on the social network</p>
             </header>
 
             <div>
                 <input name="twitter" 
                        type="text"
+                       class="container__input"
                        ng-model="social.twitter" 
                        placeholder="Twitter" />
                 <input name="facebook" 
                        type="text"
+                       class="container__input"
                        ng-model="social.facebook" 
                        placeholder="Facebook" />
                 <input name="googlePlus"
                        type="text"
+                       class="container__input"
                        ng-model="social.googlePlus" 
                        placeholder="Google Plus" />
             </div>
 
             <div>
-                <button ng-click="goto('CREATE_ACCOUNT')">
+                <button ng-click="goto('CREATE_ACCOUNT')"
+                        class="container__button">
                     Previous
                 </button>
 
-                <button ng-click="goto('PERSONAL_DETAILS')">
+                <button ng-click="goto('PERSONAL_DETAILS')"
+                        class="container__button">
                     Next
                 </button>
             </div>
@@ -124,13 +130,14 @@
         <div ng-show="showPersonalDetailsForm">
             <form name="personalDetailsForm">
                 <header>
-                    <h2>PERSONAL DETAILS</h2>
-                    <p>We will never sell it</p>
+                    <h2 class="container__title">PERSONAL DETAILS</h2>
+                    <p class="container__subtitle">We will never sell it</p>
                 </header>
 
                 <div>
                     <input name="firstName"
                            type="text"
+                           class="container__input"
                            ng-model="personalDetails.firstName" 
                            placeholder="First Name" 
                            required/>
@@ -144,10 +151,12 @@
                     </div>
                     <input name="lastName"
                            type="text"
+                           class="container__input"
                            ng-model="personalDetails.lastName" 
                            placeholder="Last Name" />
                     <input name="phone"
                            type="number"
+                           class="container__input"
                            ng-model="personalDetails.phone" 
                            ng-pattern="/^[0-9]{10}$/"
                            placeholder="Phone" 
@@ -165,6 +174,7 @@
                     </div>
                     <textarea name="address"
                               type="text"
+                              class="container__textarea"
                               ng-model="personalDetails.address" 
                               placeholder="Address" 
                               id="address" 
@@ -175,11 +185,14 @@
                 </div>
 
                 <div>
-                    <button ng-click="goto('SOCIAL_MEDIA')">
+                    <button ng-click="goto('SOCIAL_MEDIA')"
+                            class="container__button">
                         Previous
                     </button>
 
-                    <button ng-click="goto('SUBMIT')" ng-disabled="showPersonalDetailsForm.$invalid">
+                    <button ng-click="goto('SUBMIT')" 
+                            ng-disabled="showPersonalDetailsForm.$invalid"
+                            class="container__button">
                         Submit
                     </button>
                 </div>
