@@ -7,15 +7,26 @@ const app = angular
 // .service('dataStoreService', DataStoreService);
 
 function AppController($scope) {
-	console.log('initializing appcontroller');
-	$scope.title = 'appcontroller';
+	// control which form gets displayed
 	$scope.showCreateAccountForm = true;
 	$scope.showSocialProfilesForm = false;
 	$scope.showPersonalDetailsForm = false;
 
-	$scope.email = '';
-	$scope.password = '';
-	$scope.confirmPassword = '';
+	// data for create account form
+	$scope.account = {
+		email: '',
+		password: '',
+		confirmPassword: ''
+	};
+
+	// data for social profiles form
+	$scope.social = {
+		twitter: '',
+		facebook: '',
+		googlePlus: ''
+	};
+
+	// data for personal details form
 
 	$scope.goto = function(form) {
 		switch (form) {
@@ -49,20 +60,8 @@ function AppController($scope) {
 	};
 
 	$scope.matchPasswords = () => {
-		console.log('match passwords');
-		if (!$scope.confirmPassword) {
-			return;
-		}
-
-		if ($scope.password !== $scope.confirmPassword) {
-			$scope.passwordsDoNotMatch = true;
-			$scope.hasError = true;
-			$scope.createAccountForm.confirmPassword.$error.doNotMatch = true;
-		} else {
-			$scope.passwordsDoNotMatch = false;
-			$scope.hasError = false;
-			$scope.createAccountForm.confirmPassword.$error.doNotMatch = false;
-		}
+		$scope.createAccountForm.confirmPassword.$error.doNotMatch =
+			$scope.confirmPassword && $scope.password !== $scope.confirmPassword;
 	};
 }
 

@@ -15,7 +15,6 @@
 
 <body>
     <div ng-app="app" ng-controller="appController">
-        <h1>{{title}}</h1>
         <div ng-show="showCreateAccountForm">
             <form name="createAccountForm">
                 <header>
@@ -26,7 +25,7 @@
                 <div>
                     <input name="email" 
                            type="email" 
-                           ng-model="email" 
+                           ng-model="account.email" 
                            placeholder="Email" 
                            autocomplete="email username"
                            required/>
@@ -43,7 +42,7 @@
                     </div>       
                     <input name="password"
                            type="password" 
-                           ng-model="password" 
+                           ng-model="account.password" 
                            placeholder="Password" 
                            ng-change="matchPasswords()" 
                            ng-minlength="8"
@@ -62,7 +61,7 @@
                     </div>
                     <input name="confirmPassword" 
                            type="password"
-                           ng-model="confirmPassword" 
+                           ng-model="account.confirmPassword" 
                            placeholder="Confirm Password" 
                            ng-change="matchPasswords()" 
                            autocomplete="new-password"
@@ -81,7 +80,8 @@
                 </div>
 
                 <div>
-                    <button ng-click="goto('SOCIAL_MEDIA')" ng-disabled="createAccountForm.$invalid || hasError" type="submit">
+                    <button ng-click="goto('SOCIAL_MEDIA')" type="submit">
+                        <!-- ng-disabled="createAccountForm.$invalid"  -->
                         Next
                     </button>
                 </div>
@@ -89,15 +89,25 @@
         </div>
 
         <div ng-show="showSocialProfilesForm">
+            <form name="socialProfilesForm">
             <header>
                 <h2>SOCIAL PROFILES</h2>
                 <p>Your presence on the social network</p>
             </header>
 
             <div>
-                <input ng-model="twitter" placeholder="Twitter" />
-                <input ng-model="facebook" placeholder="Facebook" />
-                <input ng-model="googlePlus" placeholder="Google Plus" />
+                <input name="twitter" 
+                       type="text"
+                       ng-model="social.twitter" 
+                       placeholder="Twitter" />
+                <input name="facebook" 
+                       type="text"
+                       ng-model="social.facebook" 
+                       placeholder="Facebook" />
+                <input name="googlePlus"
+                       type="text"
+                       ng-model="social.googlePlus" 
+                       placeholder="Google Plus" />
             </div>
 
             <div>
@@ -105,35 +115,76 @@
                     Previous
                 </button>
 
-                <button ng-click="goto('PERSONAL_DETAILS')" ng-disabled="hasError">
+                <button ng-click="goto('PERSONAL_DETAILS')">
                     Next
                 </button>
             </div>
+            </form>
         </div>
 
         <div ng-show="showPersonalDetailsForm">
-            <header>
-                <h2>PERSONAL DETAILS</h2>
-                <p>We will never sell it</p>
-            </header>
+            <form name="personalDetailsForm">
+                <header>
+                    <h2>PERSONAL DETAILS</h2>
+                    <p>We will never sell it</p>
+                </header>
 
-            <div>
-                <input ng-model="first_name" placeholder="First Name" />
-                <input ng-model="last_name" placeholder="Last Name" />
-                <input ng-model="phone" placeholder="Phone" />
-                <textarea ng-model="address" placeholder="Address" name="address" id="address" cols="30" rows="5"></textarea>
-            </div>
+                <div>
+                    <input name="firstName"
+                           type="text"
+                           ng-model="personalDetails.firstName" 
+                           placeholder="First Name" 
+                           required/>
+                    <div ng-messages="personalDetailsForm.firstName.$error"
+                         ng-show="personalDetailsForm.firstName.$touched || personalDetailsForm.firstName.$dirty"
+                         role="alert"
+                         class="error">
+                        <div ng-message="required">
+                            First name is required
+                        </div>
+                    </div>
+                    <input name="lastName"
+                           type="text"
+                           ng-model="personalDetails.lastName" 
+                           placeholder="Last Name" />
+                    <input name="phone"
+                           type="number"
+                           ng-model="personalDetails.phone" 
+                           ng-pattern="/^[0-9]{10}$/"
+                           placeholder="Phone" 
+                           required/>
+                    <div ng-messages="personalDetailsForm.phone.$error"
+                         ng-show="personalDetailsForm.phone.$touched"
+                         role="alert"
+                         class="error">
+                        <div ng-message="required">
+                            Phone number is required
+                        </div>
+                        <div ng-message="pattern">
+                            Please enter a 10 digit phone number
+                        </div>
+                    </div>
+                    <textarea name="address"
+                              type="text"
+                              ng-model="personalDetails.address" 
+                              placeholder="Address" 
+                              id="address" 
+                              cols="30" 
+                              rows="3">
+                    </textarea>
 
+                </div>
 
-            <div>
-                <button ng-click="goto('SOCIAL_MEDIA')">
-                    Previous
-                </button>
+                <div>
+                    <button ng-click="goto('SOCIAL_MEDIA')">
+                        Previous
+                    </button>
 
-                <button ng-click="goto('SUBMIT')" ng-disabled="hasError">
-                    Submit
-                </button>
-            </div>
+                    <button ng-click="goto('SUBMIT')" ng-disabled="showPersonalDetailsForm.$invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
