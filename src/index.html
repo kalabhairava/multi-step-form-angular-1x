@@ -31,7 +31,7 @@
                            autocomplete="email username"
                            required/>
                     <div ng-messages="createAccountForm.email.$error" 
-                         ng-show="createAccountForm.email.$touched"
+                         ng-show="createAccountForm.email.$touched || createAccountForm.email.$dirty"
                          role="alert"
                          class="error">
                         <div ng-message="required">
@@ -50,7 +50,7 @@
                            autocomplete="new-password"
                            required/>
                     <div ng-messages="createAccountForm.password.$error" 
-                         ng-show="createAccountForm.password.$touched"
+                         ng-show="createAccountForm.password.$touched || createAccountForm.password.$dirty"
                          role="alert"
                          class="error">
                         <div ng-message="required">
@@ -68,7 +68,7 @@
                            autocomplete="new-password"
                            required/>
                     <div ng-messages="createAccountForm.confirmPassword.$error" 
-                         ng-show="createAccountForm.confirmPassword.$touched"
+                         ng-show="createAccountForm.confirmPassword.$touched || createAccountForm.confirmPassword.$dirty"
                          role="alert"
                          class="error">
                         <div ng-message="required">
