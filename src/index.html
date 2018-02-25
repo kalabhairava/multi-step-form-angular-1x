@@ -3,25 +3,137 @@
 <head>
     <title>Angular Bare</title>
     <script src="angular-1.4.8.min.js"></script>
+    <script src="angular-messages.min.js"></script>
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width initial-scale=1">
     <style>
+        .error {
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <div ng-app="app" ng-controller="appController">
         <h1>{{title}}</h1>
-        <div ng-if="showCreateAccountForm">
-            <ng-include src="'templates/create_account.html'"></ng-include>
+        <div ng-show="showCreateAccountForm">
+            <form name="createAccountForm">
+                <header>
+                    <h2>CREATE ACCOUNT</h2>
+                    <p>This is step 1</p>
+                </header>
+
+                <div>
+                    <input name="email" 
+                           type="email" 
+                           ng-model="email" 
+                           placeholder="Email" 
+                           autocomplete="email username"
+                           required/>
+                    <div ng-messages="createAccountForm.email.$error" 
+                         ng-show="createAccountForm.email.$touched"
+                         role="alert"
+                         class="error">
+                        <div ng-message="required">
+                            Email is required
+                        </div>
+                        <div ng-message="email">
+                            Please enter a valid email
+                        </div>
+                    </div>       
+                    <input name="password"
+                           type="password" 
+                           ng-model="password" 
+                           placeholder="Password" 
+                           ng-change="matchPasswords()" 
+                           ng-minlength="8"
+                           autocomplete="new-password"
+                           required/>
+                    <div ng-messages="createAccountForm.password.$error" 
+                         ng-show="createAccountForm.password.$touched"
+                         role="alert"
+                         class="error">
+                        <div ng-message="required">
+                            Password is required
+                        </div>
+                        <div ng-message="minlength">
+                            Password should be atleast 8 characters long
+                        </div>
+                    </div>
+                    <input name="confirmPassword" 
+                           type="password"
+                           ng-model="confirmPassword" 
+                           placeholder="Confirm Password" 
+                           ng-change="matchPasswords()" 
+                           autocomplete="new-password"
+                           required/>
+                    <div ng-messages="createAccountForm.confirmPassword.$error" 
+                         ng-show="createAccountForm.confirmPassword.$touched"
+                         role="alert"
+                         class="error">
+                        <div ng-message="required">
+                            Please confirm your password
+                        </div>
+                        <div ng-message="doNotMatch">
+                            Passwords do not match
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button ng-click="goto('SOCIAL_MEDIA')" ng-disabled="createAccountForm.$invalid || hasError" type="submit">
+                        Next
+                    </button>
+                </div>
+            </form>
         </div>
 
-        <div ng-if="showSocialProfilesForm">
-            <ng-include src="'templates/social_profiles.html'"></ng-include>
+        <div ng-show="showSocialProfilesForm">
+            <header>
+                <h2>SOCIAL PROFILES</h2>
+                <p>Your presence on the social network</p>
+            </header>
+
+            <div>
+                <input ng-model="twitter" placeholder="Twitter" />
+                <input ng-model="facebook" placeholder="Facebook" />
+                <input ng-model="googlePlus" placeholder="Google Plus" />
+            </div>
+
+            <div>
+                <button ng-click="goto('CREATE_ACCOUNT')">
+                    Previous
+                </button>
+
+                <button ng-click="goto('PERSONAL_DETAILS')" ng-disabled="hasError">
+                    Next
+                </button>
+            </div>
         </div>
 
-        <div ng-if="showPersonalDetailsForm">
-            <ng-include src="'templates/personal_details.html'"></ng-include>
+        <div ng-show="showPersonalDetailsForm">
+            <header>
+                <h2>PERSONAL DETAILS</h2>
+                <p>We will never sell it</p>
+            </header>
+
+            <div>
+                <input ng-model="first_name" placeholder="First Name" />
+                <input ng-model="last_name" placeholder="Last Name" />
+                <input ng-model="phone" placeholder="Phone" />
+                <textarea ng-model="address" placeholder="Address" name="address" id="address" cols="30" rows="5"></textarea>
+            </div>
+
+
+            <div>
+                <button ng-click="goto('SOCIAL_MEDIA')">
+                    Previous
+                </button>
+
+                <button ng-click="goto('SUBMIT')" ng-disabled="hasError">
+                    Submit
+                </button>
+            </div>
         </div>
     </div>
 </body>
