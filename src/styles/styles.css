@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+html {
+  font-size: 10px;
+  margin: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: montserrat, sans-serif;
+}
+
+.error {
+  color: red;
+  width: 30rem;
+}
+
+.error__message {
+  word-wrap: break-word;
+}
+.container {
+  font-size: 1.4rem;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container__title {
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.container__subtitle {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.container__input {
+  font-family: montserrat, sans-serif;
+  display: block;
+  font-size: 1.4rem;
+  padding: 1.3rem;
+  margin: 1rem 0;
+  width: 30rem;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.container__textarea {
+  font-family: montserrat, sans-serif;
+  font-size: 1.4rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.container__button-group {
+  display: flex;
+  flex-direction: row;
+  width: 30rem;
+  justify-content: space-around;
+}
+.container__button {
+  color: white;
+  background: #27ae60;
+  font-weight: bold;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  margin: 1rem 0.5rem;
+  width: 33.33%;
+}
+
+.container__button:hover,
+.container__button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
+}
+
+.container__button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Multi steps form</title>
+    <script src="build/bundle.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="src/styles/styles.css">
+</head>
+
+<body>
+    <div id="app" class="container" ng-app="app" ng-controller="appController">
+        <div ng-show="showCreateAccountForm">
+            <ng-include src="'src/views/createAccount/create_account.html'"></ng-include>
+        </div>
+
+        <div ng-show="showSocialProfilesForm">
+            <ng-include src="'src/views/socialProfiles/social_profiles.html'"></ng-include>
+        </div>
+
+        <div ng-show="showPersonalDetailsForm">
+            <ng-include src="'src/views/personalDetails/personal_details.html'"></ng-include>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<form name="createAccountForm" ng-controller="createAccountController">
+        <header>
+            <h2 class="container__title">CREATE ACCOUNT</h2>
+            <h3 class="container__subtitle">This is step 1</h3>
+        </header>
+
+        <div>
+            <input name="email" 
+                   type="email" 
+                   class="container__input"
+                   ng-model="account.email" 
+                   placeholder="Email" 
+                   autocomplete="email username"
+                   required/>
+            <div ng-messages="createAccountForm.email.$error" 
+                 ng-show="createAccountForm.email.$touched || createAccountForm.email.$dirty"
+                 role="alert"
+                 class="error">
+                <div ng-message="required" class="error__message">
+                    Email is required
+                </div>
+                <div ng-message="email" class="error__message">
+                    Please enter a valid email
+                </div>
+            </div>       
+            <input name="password"
+                   type="password" 
+                   class="container__input"
+                   ng-model="account.password" 
+                   placeholder="Password" 
+                   ng-change="matchPasswords()" 
+                   ng-minlength="8"
+                   autocomplete="new-password"
+                   required/>
+            <div ng-messages="createAccountForm.password.$error" 
+                 ng-show="createAccountForm.password.$touched || createAccountForm.password.$dirty"
+                 role="alert"
+                 class="error">
+                <div ng-message="required" class="error__message">
+                    Password is required
+                </div>
+                <div ng-message="minlength" class="error__message">
+                    Password should be atleast 8 characters long
+                </div>
+            </div>
+            <input name="confirmPassword" 
+                   type="password"
+                   class="container__input"
+                   ng-model="account.confirmPassword" 
+                   placeholder="Confirm Password" 
+                   ng-change="matchPasswords()" 
+                   autocomplete="new-password"
+                   required/>
+            <div ng-messages="createAccountForm.confirmPassword.$error" 
+                 ng-show="createAccountForm.confirmPassword.$touched || createAccountForm.confirmPassword.$dirty"
+                 role="alert"
+                 class="error">
+                <div ng-message="required" class="error__message">
+                    Please confirm your password
+                </div>
+                <div ng-message="doNotMatch" class="error__message">
+                    Passwords do not match
+                </div>
+            </div>
+        </div>
+
+        <div class="container__button-group">
+            <button ng-click="goto('SOCIAL_MEDIA')" 
+                    ng-disabled="createAccountForm.$invalid"
+                    class="container__button">
+                Next
+            </button>
+        </div>
+    </form>
