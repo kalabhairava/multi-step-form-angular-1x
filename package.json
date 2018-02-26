@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify src/app.js -o public/bundle.js",
-    "start": "npm run build && http-server public/"
+    "build": "browserify src/app.js -o build/bundle.js",
+    "start": "npm run build && http-server"
   },
   "repository": {
     "type": "git",
