@@ -1,2 +1,5 @@
-# multi-step-form-angular-1x
-Multi step form with input validations built with Angular 1.x.
+# Multi step form with validations
+
+Built with AngularJS 1.x
+
+[Live app](https://multi-step-form-ajs.herokuapp.com/)
