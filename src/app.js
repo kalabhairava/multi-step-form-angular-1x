@@ -1,75 +1,79 @@
-const app = angular
-	.module('app', ['ngMessages'])
-	.controller('appController', AppController);
+const app = angular.module('app', ['ngMessages']).controller('appController', AppController);
 // .controller('createAccountController', CreateAccountController)
 // .controller('socialProfilesController', SocialProfilesController)
 // .controller('personalDetailsController', PersonalDetailsController)
 // .service('dataStoreService', DataStoreService);
 
 function AppController($scope) {
-	// control which form gets displayed
-	$scope.showCreateAccountForm = true;
-	$scope.showSocialProfilesForm = false;
-	$scope.showPersonalDetailsForm = false;
+  // control which form gets displayed
+  $scope.showCreateAccountForm = true;
+  $scope.showSocialProfilesForm = false;
+  $scope.showPersonalDetailsForm = false;
 
-	// data for create account form
-	$scope.account = {
-		email: '',
-		password: '',
-		confirmPassword: ''
-	};
+  // data for create account form
+  $scope.account = {
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
 
-	// data for social profiles form
-	$scope.social = {
-		twitter: '',
-		facebook: '',
-		googlePlus: ''
-	};
+  // data for social profiles form
+  $scope.social = {
+    twitter: '',
+    facebook: '',
+    googlePlus: ''
+  };
 
-	// data for personal details form
-	$scope.personalDetails = {
-		firstName: '',
-		lastName: '',
-		phone: null,
-		address: ''
-	};
+  // data for personal details form
+  $scope.personalDetails = {
+    firstName: '',
+    lastName: '',
+    phone: null,
+    address: ''
+  };
 
-	$scope.goto = function(form) {
-		switch (form) {
-			case 'CREATE_ACCOUNT':
-				$scope.showCreateAccountForm = true;
-				$scope.showSocialProfilesForm = false;
-				$scope.showPersonalDetailsForm = false;
-				break;
+  $scope.goto = function(form) {
+    switch (form) {
+      case 'CREATE_ACCOUNT':
+        $scope.showCreateAccountForm = true;
+        $scope.showSocialProfilesForm = false;
+        $scope.showPersonalDetailsForm = false;
+        break;
 
-			case 'SOCIAL_MEDIA':
-				$scope.showCreateAccountForm = false;
-				$scope.showSocialProfilesForm = true;
-				$scope.showPersonalDetailsForm = false;
-				break;
+      case 'SOCIAL_MEDIA':
+        $scope.showCreateAccountForm = false;
+        $scope.showSocialProfilesForm = true;
+        $scope.showPersonalDetailsForm = false;
+        break;
 
-			case 'PERSONAL_DETAILS':
-				$scope.showCreateAccountForm = false;
-				$scope.showSocialProfilesForm = false;
-				$scope.showPersonalDetailsForm = true;
-				break;
+      case 'PERSONAL_DETAILS':
+        $scope.showCreateAccountForm = false;
+        $scope.showSocialProfilesForm = false;
+        $scope.showPersonalDetailsForm = true;
+        break;
 
-			case 'SUBMIT':
-				alert('Details submitted');
-				break;
+      case 'SUBMIT':
+        alert('Details submitted');
+        break;
 
-			default:
-				$scope.showCreateAccountForm = true;
-				$scope.showSocialProfilesForm = false;
-				$scope.showPersonalDetailsForm = false;
-		}
-	};
+      default:
+        $scope.showCreateAccountForm = true;
+        $scope.showSocialProfilesForm = false;
+        $scope.showPersonalDetailsForm = false;
+    }
+  };
 
-	$scope.matchPasswords = () => {
-		const { password, confirmPassword } = $scope.account;
-		$scope.createAccountForm.confirmPassword.$error.doNotMatch =
-			confirmPassword && password !== confirmPassword;
-	};
+  $scope.matchPasswords = () => {
+    console.log($scope.createAccountForm.$invalid);
+    const { password, confirmPassword } = $scope.account;
+
+    if (confirmPassword && password !== confirmPassword) {
+      $scope.createAccountForm.$invalid = true;
+      $scope.createAccountForm.confirmPassword.$error.doNotMatch = true;
+    } else {
+      $scope.createAccountForm.confirmPassword.$error.doNotMatch = false;
+    }
+  };
 }
 
 // function CreateAccountController($scope) {

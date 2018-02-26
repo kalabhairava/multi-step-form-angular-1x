@@ -1,9 +1,9 @@
 <html>
 
 <head>
-    <title>Angular Bare</title>
-    <script src="../libs/angular-1.4.8.min.js"></script>
-    <script src="../libs/angular-messages.min.js"></script>
+    <title>Multi steps form</title>
+    <script src="./libs/angular-1.4.8.min.js"></script>
+    <script src="./libs/angular-messages.min.js"></script>
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width initial-scale=1">
     <link rel="stylesheet" href="./styles/styles.css">
@@ -30,10 +30,10 @@
                          ng-show="createAccountForm.email.$touched || createAccountForm.email.$dirty"
                          role="alert"
                          class="error">
-                        <div ng-message="required">
+                        <div ng-message="required" class="error__message">
                             Email is required
                         </div>
-                        <div ng-message="email">
+                        <div ng-message="email" class="error__message">
                             Please enter a valid email
                         </div>
                     </div>       
@@ -50,10 +50,10 @@
                          ng-show="createAccountForm.password.$touched || createAccountForm.password.$dirty"
                          role="alert"
                          class="error">
-                        <div ng-message="required">
+                        <div ng-message="required" class="error__message">
                             Password is required
                         </div>
-                        <div ng-message="minlength">
+                        <div ng-message="minlength" class="error__message">
                             Password should be atleast 8 characters long
                         </div>
                     </div>
@@ -69,16 +69,16 @@
                          ng-show="createAccountForm.confirmPassword.$touched || createAccountForm.confirmPassword.$dirty"
                          role="alert"
                          class="error">
-                        <div ng-message="required">
+                        <div ng-message="required" class="error__message">
                             Please confirm your password
                         </div>
-                        <div ng-message="doNotMatch">
+                        <div ng-message="doNotMatch" class="error__message">
                             Passwords do not match
                         </div>
                     </div>
                 </div>
 
-                <div>
+                <div class="container__button-group">
                     <button ng-click="goto('SOCIAL_MEDIA')" 
                             ng-disabled="createAccountForm.$invalid"
                             class="container__button">
@@ -113,7 +113,7 @@
                        placeholder="Google Plus" />
             </div>
 
-            <div>
+            <div class="container__button-group">
                 <button ng-click="goto('CREATE_ACCOUNT')"
                         class="container__button">
                     Previous
@@ -145,7 +145,7 @@
                          ng-show="personalDetailsForm.firstName.$touched || personalDetailsForm.firstName.$dirty"
                          role="alert"
                          class="error">
-                        <div ng-message="required">
+                        <div ng-message="required" class="error__message">
                             First name is required
                         </div>
                     </div>
@@ -165,10 +165,10 @@
                          ng-show="personalDetailsForm.phone.$touched"
                          role="alert"
                          class="error">
-                        <div ng-message="required">
+                        <div ng-message="required" class="error__message">
                             Phone number is required
                         </div>
-                        <div ng-message="pattern">
+                        <div ng-message="pattern" class="error__message">
                             Please enter a 10 digit phone number
                         </div>
                     </div>
@@ -184,7 +184,7 @@
 
                 </div>
 
-                <div>
+                <div class="container__button-group">
                     <button ng-click="goto('SOCIAL_MEDIA')"
                             class="container__button">
                         Previous
