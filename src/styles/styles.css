@@ -29,6 +29,7 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
 .container__title {
   text-align: center;
   font-size: 2.4rem;
@@ -50,10 +51,6 @@ body {
   border-radius: 3px;
   border: 1px solid black;
 }
-
-/* .container__input-group {
-	flex: 0 0 5rem;
-} */
 
 .container__textarea {
   font-family: montserrat, sans-serif;
@@ -91,7 +88,3 @@ body {
   opacity: 0.5;
   cursor: default;
 }
-
-/* * {
-  outline: 1px solid red;
-} */
