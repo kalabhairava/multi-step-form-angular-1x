@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "http-server src/"
+    "build": "browserify src/app.js -o public/bundle.js",
+    "start": "npm run build && http-server public/"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/kalabhairava/multi-step-form-angular-1x",
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-messages": "^1.4.8",
+    "browserify": "^16.1.0",
     "http-server": "^0.11.1"
   }
 }
