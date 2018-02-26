@@ -1,36 +1,15 @@
-const app = angular.module('app', ['ngMessages']).controller('appController', AppController);
-// .controller('createAccountController', CreateAccountController)
-// .controller('socialProfilesController', SocialProfilesController)
-// .controller('personalDetailsController', PersonalDetailsController)
-// .service('dataStoreService', DataStoreService);
+const app = angular
+  .module('app', ['ngMessages'])
+  .controller('appController', AppController)
+  .controller('createAccountController', CreateAccountController)
+  .controller('socialProfilesController', SocialProfilesController)
+  .controller('personalDetailsController', PersonalDetailsController);
 
 function AppController($scope) {
   // control which form gets displayed
   $scope.showCreateAccountForm = true;
   $scope.showSocialProfilesForm = false;
   $scope.showPersonalDetailsForm = false;
-
-  // data for create account form
-  $scope.account = {
-    email: '',
-    password: '',
-    confirmPassword: ''
-  };
-
-  // data for social profiles form
-  $scope.social = {
-    twitter: '',
-    facebook: '',
-    googlePlus: ''
-  };
-
-  // data for personal details form
-  $scope.personalDetails = {
-    firstName: '',
-    lastName: '',
-    phone: null,
-    address: ''
-  };
 
   $scope.goto = function(form) {
     switch (form) {
@@ -62,9 +41,16 @@ function AppController($scope) {
         $scope.showPersonalDetailsForm = false;
     }
   };
+}
+
+function CreateAccountController($scope) {
+  $scope.account = {
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
 
   $scope.matchPasswords = () => {
-    console.log($scope.createAccountForm.$invalid);
     const { password, confirmPassword } = $scope.account;
 
     if (confirmPassword && password !== confirmPassword) {
@@ -76,25 +62,19 @@ function AppController($scope) {
   };
 }
 
-// function CreateAccountController($scope) {
-// 	$scope.email = '';
-// 	$scope.password = '';
-// 	$scope.confirmPassword = '';
+function SocialProfilesController($scope) {
+  $scope.social = {
+    twitter: '',
+    facebook: '',
+    googlePlus: ''
+  };
+}
 
-// 	$scope.next = function() {
-// 		console.log($scope);
-// 		console.log($scope.$parent);
-
-// 		$scope.$parent.showCreateAccountForm = false;
-// 		$scope.$parent.showSocialProfilesForm = true;
-
-// 		$scope.title = 'updated title';
-// 		// $scope.$apply();
-// 	};
-// }
-
-// function SocialProfilesController($scope) {}
-
-// function PersonalDetailsController($scope) {}
-
-// function DataStoreService() {}
+function PersonalDetailsController($scope) {
+  $scope.personalDetails = {
+    firstName: '',
+    lastName: '',
+    phone: null,
+    address: ''
+  };
+}

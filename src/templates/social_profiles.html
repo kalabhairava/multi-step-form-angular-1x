@@ -1,0 +1,36 @@
+<form name="socialProfilesForm" ng-controller="socialProfilesController">
+        <header>
+            <h2 class="container__title">SOCIAL PROFILES</h2>
+            <p class="container__subtitle">Your presence on the social network</p>
+        </header>
+
+        <div>
+            <input name="twitter" 
+                   type="text"
+                   class="container__input"
+                   ng-model="social.twitter" 
+                   placeholder="Twitter" />
+            <input name="facebook" 
+                   type="text"
+                   class="container__input"
+                   ng-model="social.facebook" 
+                   placeholder="Facebook" />
+            <input name="googlePlus"
+                   type="text"
+                   class="container__input"
+                   ng-model="social.googlePlus" 
+                   placeholder="Google Plus" />
+        </div>
+
+        <div class="container__button-group">
+            <button ng-click="goto('CREATE_ACCOUNT')"
+                    class="container__button">
+                Previous
+            </button>
+
+            <button ng-click="goto('PERSONAL_DETAILS')"
+                    class="container__button">
+                Next
+            </button>
+        </div>
+</form>

@@ -1,0 +1,69 @@
+<form name="personalDetailsForm">
+        <header>
+            <h2 class="container__title">PERSONAL DETAILS</h2>
+            <p class="container__subtitle">We will never sell it</p>
+        </header>
+
+        <div>
+            <input name="firstName"
+                   type="text"
+                   class="container__input"
+                   ng-model="personalDetails.firstName" 
+                   placeholder="First Name" 
+                   required/>
+            <div ng-messages="personalDetailsForm.firstName.$error"
+                 ng-show="personalDetailsForm.firstName.$touched || personalDetailsForm.firstName.$dirty"
+                 role="alert"
+                 class="error">
+                <div ng-message="required" class="error__message">
+                    First name is required
+                </div>
+            </div>
+            <input name="lastName"
+                   type="text"
+                   class="container__input"
+                   ng-model="personalDetails.lastName" 
+                   placeholder="Last Name" />
+            <input name="phone"
+                   type="number"
+                   class="container__input"
+                   ng-model="personalDetails.phone" 
+                   ng-pattern="/^[0-9]{10}$/"
+                   placeholder="Phone" 
+                   required/>
+            <div ng-messages="personalDetailsForm.phone.$error"
+                 ng-show="personalDetailsForm.phone.$touched"
+                 role="alert"
+                 class="error">
+                <div ng-message="required" class="error__message">
+                    Phone number is required
+                </div>
+                <div ng-message="pattern" class="error__message">
+                    Please enter a 10 digit phone number
+                </div>
+            </div>
+            <textarea name="address"
+                      type="text"
+                      class="container__textarea"
+                      ng-model="personalDetails.address" 
+                      placeholder="Address" 
+                      id="address" 
+                      cols="30" 
+                      rows="3">
+            </textarea>
+
+        </div>
+
+        <div class="container__button-group">
+            <button ng-click="goto('SOCIAL_MEDIA')"
+                    class="container__button">
+                Previous
+            </button>
+
+            <button ng-click="goto('SUBMIT')" 
+                    ng-disabled="showPersonalDetailsForm.$invalid"
+                    class="container__button">
+                Submit
+            </button>
+        </div>
+    </form>
